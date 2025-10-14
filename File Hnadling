@@ -1,0 +1,63 @@
+package filehandlingpackage;
+import java.io.*;
+
+public class FileWork {
+
+	public void WriteData() {
+		
+		try {
+		File f = new File("E:\\Java\\Programs\\myFile.txt");
+		FileWriter fw = new FileWriter(f);
+		fw.write("Welcome to file handling Demo!");
+		fw.write("How are you on this fine day?");
+		fw.close();
+		System.out.println("Finished");
+		}
+		catch(Exception e) {
+			System.out.println("Exception : "+e.getMessage());
+		}
+	}
+	
+	public void AppendData() { //this will not get you new line
+		
+		try {
+		File f = new File("E:\\Java\\Programs\\myFile.txt");
+		FileWriter fw = new FileWriter(f,true);
+		fw.write("\nGlad to meet you");
+		fw.close();
+		System.out.println("Finished");
+		}
+		catch(Exception e) {
+			System.out.println("Exception : "+e.getMessage());
+		}
+	}
+	
+	public void AppendNewLineData() { //this will get you new line
+		
+		try {
+		File f = new File("E:\\Java\\Programs\\myFile.txt");
+		FileWriter fw = new FileWriter(f,true);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.newLine();
+		bw.write("Go to hell");
+		bw.newLine();
+		bw.write("\nGlad to meet you");
+		bw.newLine();
+		bw.close();
+		System.out.println("Finished");
+		}
+		catch(Exception e) {
+			System.out.println("Exception : "+e.getMessage());
+		}
+	}	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		FileWork ob = new FileWork();
+		ob.WriteData();
+		ob.AppendNewLineData();
+	}
+
+}
